@@ -47,5 +47,7 @@ typedef struct deck_node_s
  */
 void sort_deck(deck_node_t **deck);
 
+void print_deck(const deck_node_t *deck);
+
 #endif /* DECK_H */
 

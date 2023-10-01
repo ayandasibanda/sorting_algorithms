@@ -1,12 +1,10 @@
 #include "deck.h"
-#include <stddef.h>
-#include <stdlib.h>
 #include <stdio.h>
 
 /**
- * _strcmp - compare two strings
- * @str1: string
- * @str2: string
+ * _strcmp - Compare two strings.
+ * @str1: First string
+ * @str2: Second string
  * Return: 1 if str1 and str2 are equal, 0 otherwise
  */
 int _strcmp(const char *str1, char *str2)
@@ -30,9 +28,9 @@ int _strcmp(const char *str1, char *str2)
 }
 
 /**
- * get_card_position - return the position based on the card
- * @node: represent the card
- * Return: return the card position
+ * get_card_position - Return the position based on the card.
+ * @node: Represents the card
+ * Return: The card position
  */
 int get_card_position(deck_node_t *node)
 {
@@ -59,10 +57,10 @@ int get_card_position(deck_node_t *node)
 }
 
 /**
- * swap_card - swap a card for its previous one
- * @card: card
- * @deck: card deck
- * Return: return a pointer to a card which was entered
+ * swap_card - Swap a card with its previous one.
+ * @card: Card
+ * @deck: Card deck
+ * Return: A pointer to a card which was entered
  */
 deck_node_t *swap_card(deck_node_t *card, deck_node_t **deck)
 {
@@ -86,8 +84,7 @@ deck_node_t *swap_card(deck_node_t *card, deck_node_t **deck)
 }
 
 /**
- * insertion_sort_deck - function that sorts a doubly linked deck
- * of integers in ascending order using the Insertion sort algorithm
+ * insertion_sort_deck - Sort a doubly linked deck in ascending order using Insertion Sort.
  * @deck: Double linked deck to sort
  */
 void insertion_sort_deck(deck_node_t **deck)
@@ -110,7 +107,16 @@ void insertion_sort_deck(deck_node_t **deck)
 
         while (node->prev && value_prev > value_current)
         {
+            /* Print the deck before swap */
+            printf("Before swap:\n");
+            print_deck(*deck);
+
             node = swap_card(node, deck);
+
+            /* Print the deck after swap */
+            printf("After swap:\n");
+            print_deck(*deck);
+
             value_prev = get_card_position(node->prev);
             value_current = get_card_position(node);
         }
@@ -120,8 +126,8 @@ void insertion_sort_deck(deck_node_t **deck)
 }
 
 /**
- * sort_deck - sort a deck using the insertion sort algorithm
- * @deck: deck
+ * sort_deck - Sort a deck using the insertion sort algorithm.
+ * @deck: Deck to sort
  */
 void sort_deck(deck_node_t **deck)
 {
